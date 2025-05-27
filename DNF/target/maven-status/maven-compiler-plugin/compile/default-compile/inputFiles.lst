@@ -1,5 +1,8 @@
+D:\cppPrograme\javaProgrammeMany\DNF\DNF\src\main\java\com\example\dnf\controller\TESTController.java
 D:\cppPrograme\javaProgrammeMany\DNF\DNF\src\main\java\com\example\dnf\controller\USERController.java
 D:\cppPrograme\javaProgrammeMany\DNF\DNF\src\main\java\com\example\dnf\DnfApplication.java
-D:\cppPrograme\javaProgrammeMany\DNF\DNF\src\main\java\com\example\dnf\entity\dnf_sql.java
-D:\cppPrograme\javaProgrammeMany\DNF\DNF\src\main\java\com\example\dnf\entity\user.java
+D:\cppPrograme\javaProgrammeMany\DNF\DNF\src\main\java\com\example\dnf\entity\test.java
+D:\cppPrograme\javaProgrammeMany\DNF\DNF\src\main\java\com\example\dnf\entity\User.java
+D:\cppPrograme\javaProgrammeMany\DNF\DNF\src\main\java\com\example\dnf\mapper\TESTMapper.java
 D:\cppPrograme\javaProgrammeMany\DNF\DNF\src\main\java\com\example\dnf\mapper\USERMapper.java
+D:\cppPrograme\javaProgrammeMany\DNF\DNF\src\main\java\com\example\dnf\service\USERService.java
