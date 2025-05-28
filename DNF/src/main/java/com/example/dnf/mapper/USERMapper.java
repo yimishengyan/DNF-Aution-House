@@ -4,6 +4,7 @@ import com.example.dnf.entity.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -16,6 +17,15 @@ public interface USERMapper{
     @Select("select userId, name, password, money, name, password, money, name, password, money from user")
     public List<User> showUser();
 
-    @Select("select user_id from user where name = #{name}")
-    public int selectUserName(String name);
+    @Select("select userId from user where name = #{name}")
+    public Integer selectUserName(String name);
+
+    @Select("select password from user where name = #{name}")
+    public String selectUserPassword(String name);
+
+    @Update("UPDATE user SET money = #{money} WHERE userId = #{userId}")
+    public int changeMoney(int userId, double money);
+
+    @Select("SELECT money FROM user WHERE userId = #{userId}")
+    public Double selectMoney(int userId);
 }

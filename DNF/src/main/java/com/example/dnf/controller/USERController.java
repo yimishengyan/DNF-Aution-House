@@ -18,11 +18,16 @@ public class USERController {
     public String insertUser(@RequestBody User user){
         if(userService.selectUserName(user.getName()) == 0)
             return userService.insertUser(user);
-        else return "插入失败，请修改用户名";
+        else return "用户已存在，请修改用户名";
     }
 
     @RequestMapping(value = "/showUser", method = RequestMethod.GET)
     public List<User> showUser(){
         return userService.showUser();
+    }
+
+    @RequestMapping(value = "/selectUser", method = RequestMethod.POST)
+    public String selectUser(@RequestBody User user){
+        return userService.selectUserPassword(user);
     }
 }

@@ -17,4 +17,5 @@ public class Object {
     private String type;
     private String value;
     private Integer ownerId;
+    private String path;
 }

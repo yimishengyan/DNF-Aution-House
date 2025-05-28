@@ -23,8 +23,14 @@ public class USERService {
         return userMapper.showUser();
     }
 
-    public Integer selectUserName(String name) {
-        int ret = userMapper.selectUserName(name);
-        return ret > 0 ? ret : 0;
+    public int selectUserName(String name) {
+        Integer ret = userMapper.selectUserName(name);
+        return ret == null ? 0 : ret;
+    }
+
+    public String selectUserPassword(User user) {
+        String ret = userMapper.selectUserPassword(user.getName());
+        if(ret == null) return "无该账号";
+        return ret.equals(user.getPassword()) ? "登录成功" : "登陆失败";
     }
 }
