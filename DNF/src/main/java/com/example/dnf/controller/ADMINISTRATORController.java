@@ -15,11 +15,20 @@ public class ADMINISTRATORController {
 
     @RequestMapping(value = "/insertAdministrator", method = RequestMethod.POST)
     public String insertAdministrator(@RequestBody Administrator administrator) {
-        return administratorService.insertAdministrator(administrator);
+        if(administratorService.sllectAdministratorName(administrator.getName()) == 0)
+            return administratorService.insertAdministrator(administrator);
+        System.out.println("接收到的 type: " + administrator);
+        return "管理员已存在，请修改用户名";
     }
 
     @RequestMapping(value = "/showAdministrator", method = RequestMethod.GET)
     public List<Administrator> getAllAdministrator() {
         return administratorService.showAdministrator();
+    }
+
+    @RequestMapping(value = "/selectAdministrator", method = RequestMethod.POST)
+    String selectAdministratorPassword(@RequestBody Administrator administrator){
+        System.out.println("接收到的 type: " + administrator);
+        return administratorService.selectAdministratorPassword(administrator);
     }
 }

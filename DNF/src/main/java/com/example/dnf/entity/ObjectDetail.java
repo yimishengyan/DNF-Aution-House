@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderDetail {
-    Integer orderId;
-    String objectName;
-    String buyerName;
-    String sellerName;
+public class ObjectDetail {
+    Integer objectId;
+    String name;
+    Integer count;
     Double value;
 }

@@ -2,12 +2,12 @@ package com.example.dnf.controller;
 
 import com.example.dnf.entity.Order;
 import com.example.dnf.entity.OrderDetail;
+import com.example.dnf.entity.User;
 import com.example.dnf.service.ORDERService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -16,12 +16,14 @@ public class ORDERController {
     ORDERService orderService;
 
     @RequestMapping("/insertOrder")
-    public String insertOrder(Order order){
+    public String insertOrder(@RequestBody Order order){
+        System.out.println("购买物品订单信息" + order);
         return orderService.insertOrder(order);
     }
 
-    @RequestMapping(value = "/showOrder", method = RequestMethod.GET)
-    public OrderDetail showOrder(Integer orderId){
-        return orderService.showOrder(orderId);
+    @RequestMapping(value = "/showOrder", method = RequestMethod.POST)
+    public List<OrderDetail> showOrder(@RequestBody User user){
+        System.out.println("展示订单时，用户信息" + user);
+        return orderService.showOrder(user.getUserId());
     }
 }

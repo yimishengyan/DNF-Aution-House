@@ -8,28 +8,30 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 public interface ORDERMapper {
     @Options(useGeneratedKeys = true, keyProperty = "orderId", keyColumn = "orderId")
-    @Insert("INSERT INTO order (objectId, buyerId, sellerId, value) VALUES (#{objectId}, #{buyerId}, #{sellerId}, #{value})")
+    @Insert("INSERT INTO `order` (objectId, buyerId, sellerId, value) VALUES (#{objectId}, #{buyerId}, #{sellerId}, #{value})")
     public int insertOrder(Order order);
 
     @Select("""
         SELECT 
-            o.object_id AS objectId,
+            o.orderId,
             obj.name AS objectName,
             buyer.name AS buyerName,
             seller.name AS sellerName,
             o.value
         FROM 
-            order o
+            `order` o
         JOIN 
-            object obj ON o.object_id = obj.object_id
+            object obj ON o.objectId = obj.objectId
         JOIN 
-            user buyer ON o.buyer_id = buyer.user_id
+            user buyer ON o.buyerId = buyer.userId
         JOIN 
-            user seller ON o.seller_id = seller.user_id
+            user seller ON o.sellerId = seller.userId
         WHERE 
-            o.order_id = #{orderId}
+            buyer.userId = #{userId}
         """)
-    OrderDetail getOrderDetails(@Param("orderId") int orderId);
+    List<OrderDetail> getOrderDetails(Integer userId);
 }

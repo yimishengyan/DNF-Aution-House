@@ -1,6 +1,7 @@
 package com.example.dnf.service;
 
 import com.example.dnf.entity.Administrator;
+import com.example.dnf.entity.User;
 import com.example.dnf.mapper.ADMINISTRATORMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,5 +21,17 @@ public class ADMINISTRATORService {
 
     public List<Administrator> showAdministrator() {
         return administratorMapper.showAdministrator();
+    }
+
+    public Integer sllectAdministratorName(String name){
+        Integer ret = administratorMapper.selectAdministratorName(name);
+        return ret == null ? 0 : ret;
+    }
+
+    public String selectAdministratorPassword(Administrator administrator) {
+        String ret = administratorMapper.selectAdministratorPassword(administrator.getName());
+        if(ret == null)return "无该管理员";
+        if(ret.equals(administrator.getPassword()))return "登录成功";
+        return "登录失败";
     }
 }

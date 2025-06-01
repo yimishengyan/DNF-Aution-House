@@ -1,10 +1,7 @@
 package com.example.dnf.mapper;
 
 import com.example.dnf.entity.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -17,8 +14,8 @@ public interface USERMapper{
     @Select("select userId, name, password, money, name, password, money, name, password, money from user")
     public List<User> showUser();
 
-    @Select("select userId from user where name = #{name}")
-    public Integer selectUserName(String name);
+    @Select("select * from user where name = #{name}")
+    public User selectUserName(String name);
 
     @Select("select password from user where name = #{name}")
     public String selectUserPassword(String name);
@@ -28,4 +25,10 @@ public interface USERMapper{
 
     @Select("SELECT money FROM user WHERE userId = #{userId}")
     public Double selectMoney(int userId);
+
+    @Delete("DELETE FROM user WHERE userId = #{userId}")
+    public Integer deleteUser(Integer userId);
+
+    @Select("SELECT * FROM user WHERE userId = #{userId}")
+    public User showSingleUser(int userId);
 }

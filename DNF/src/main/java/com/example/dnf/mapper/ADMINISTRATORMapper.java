@@ -14,4 +14,10 @@ public interface ADMINISTRATORMapper {
 
     @Select("select * from administrator")
     public List<Administrator> showAdministrator();
+
+    @Select("select administratorId from administrator where name = #{name}")
+    public Integer selectAdministratorName(String name);
+
+    @Select("SELECT password FROM administrator WHERE name = #{name}")
+    public String selectAdministratorPassword(String name);
 }
